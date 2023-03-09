@@ -1,3 +1,66 @@
 thead {
     color: #337AB7;
   }
+
+  .card-body .row .card {
+    width: 350px;
+    height: 450px;
+  }
+  
+  .card-body .row .card .card-body {
+    padding: 10px;
+  }
+  
+  .card-body .row .card .card-footer {
+    padding: 10px;
+  }
+  
+  .card-body .row .card .card-body h5 {
+    font-size: 18px;
+  }
+  
+  .card-body .row .card .card-body p {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  .card-body .row .card .card-body button:first-child {
+    display: none;
+  }
+  
+  .card-body .row .card .card-body .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .card-body .row .card .card-body .card-footer small {
+    font-size: 16px;
+  }
+
+  
+  
+  .card-body .row .card .card-body .card-footer button:last-child {
+    margin-left: auto;
+  }
+  
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .thatCard img {
+    /* background-color: red; */
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .thatCard .card-text {
+    height: 30px;
+    color: rgb(54, 54, 54);
+
+  }
+  
+  .thatCard .card-title {
+    color: black;
+  }

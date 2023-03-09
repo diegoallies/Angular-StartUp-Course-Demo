@@ -2,6 +2,13 @@
   font-size: large;
 }
 
+nav {
+  margin-left: 125px;
+  margin-right: 125px;
+  margin-bottom: 30px;
+  border-bottom: 4px double rgb(204, 204, 204);
+}
+
 /* .comp {
   color: red;
 } */

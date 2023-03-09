@@ -26,7 +26,7 @@ export class ProductDetailComponent implements OnInit {
     
       this.product = res.find(item => item.productId == id) 
     
-      console.log(this.product)
+      // console.log(this.product)
       
     })
     
@@ -35,5 +35,14 @@ export class ProductDetailComponent implements OnInit {
   onBack(): void {
     this.router.navigate(['/products']);
   }
+
+  onProductClicked(product: IProduct): void {
+    // console.log('Product clicked: ', product);
+  }
+  
+  addToCart(product: IProduct): void {
+    // console.log('Product added to cart: ', product);
+  }
+  
 
 }
