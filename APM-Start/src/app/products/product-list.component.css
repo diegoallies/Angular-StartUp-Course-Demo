@@ -2,6 +2,15 @@ thead {
     color: #337AB7;
   }
 
+  .card-body {
+    background-color: rgb(238, 238, 238);
+ 
+  }
+
+  .btnn:hover {
+    background-color: #337AB7;
+  }
+  
   .card-body .row .card {
     width: 350px;
     height: 450px;
@@ -64,3 +73,10 @@ thead {
   .thatCard .card-title {
     color: black;
   }
+
+  .thatCard a:hover {
+    text-decoration: none;
+    pointer-events: painted;
+  }
+  
+

@@ -6,9 +6,20 @@ nav {
   margin-left: 125px;
   margin-right: 125px;
   margin-bottom: 30px;
-  border-bottom: 4px double rgb(204, 204, 204);
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-radius: 7px;
+  padding: 10px;
 }
+/* 
+.container {
+  background-color: rgb(255, 0, 0);
+} */
 
+.all {
+  background-color: rgb(238, 238, 238);
+}
 /* .comp {
   color: red;
 } */

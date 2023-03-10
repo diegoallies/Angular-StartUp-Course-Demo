@@ -6,7 +6,7 @@ import { IProduct } from '../products/product';
 })
 export class CartService {
   items: IProduct[] = [];
-  cartUpdated = new EventEmitter<IProduct[]>();
+  cartUpdated: EventEmitter<IProduct[]> = new EventEmitter<IProduct[]>();
 
   constructor() {}
 
@@ -18,9 +18,10 @@ export class CartService {
     } else {
       // Product already exists in cart, increment the quantity
       this.items[index].quantity++;
-;
+      console.log(this.items)
     }
-    this.cartUpdated.emit(this.items); // emit event with updated cart items
+    // Emit event with updated cart items
+    this.cartUpdated.emit([...this.items]); // emit a new array to trigger change detection in the component
   }
 
   getItems(): IProduct[] {

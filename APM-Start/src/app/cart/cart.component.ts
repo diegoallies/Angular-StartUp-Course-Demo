@@ -11,18 +11,20 @@ export class CartComponent implements OnInit {
   cartItems: IProduct[] = [];
   reload: boolean = false;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService) {
+    this.loadCartItems()
+  }
 
   ngOnInit(): void {
     this.loadCartItems();
-  }
-
-  loadCartItems(): void {
+    // Subscribe to the cartUpdated event to update the cartItems array
     this.cartService.cartUpdated.subscribe((items: IProduct[]) => {
       this.cartItems = items;
     });
+  }
+
+  loadCartItems(): void {
     this.cartItems = this.cartService.getItems();
-    console.log(this.cartItems);
   }
 
   getTotal(): number {
