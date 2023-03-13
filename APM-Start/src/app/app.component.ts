@@ -1,28 +1,32 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { GlobalService } from "./shared/global.service";
 
-// @Component({
-//   selector: 'pm-root',
-//   template: `
-//   <nav class='navbar navbar-expand navbar-light bg-light'>
-//   <a class='navbar-brand'>{{pageTitle}}</a>
-//   <ul class='nav nav-pills'>
-//     <li><a class='nav-link' routerLink='/welcome'>Home</a></li>
-//     <li><a class='nav-link' routerLink='/products'>Product List</a></li>
-//   </ul>
-//   <button class='btn btn-outline-primary ml-auto' routerLink='/cart'>Cart</button>
-// </nav>
-
-//   <div class='container'>
-//     <router-outlet></router-outlet>
-//   </div>
-//   `
-// })
+declare var myGlobalVar: string;
 
 @Component({
   selector: "pm-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
 })
-export class AppComponent {
-  pageTitle: string = 'Encrypto Product Management';
+export class AppComponent implements OnInit {
+  pageTitle = 'Encrypto Product Management';
+  username = '';
+
+  constructor(private globalService: GlobalService) {}
+
+  ngOnInit() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn && isLoggedIn === 'true') {
+      this.username = localStorage.getItem('username') || '';
+    }
+
+    console.log(this.username)
+
+    // Subscribe to the username observable in the global service
+    this.globalService.getUsername().subscribe((username: string) => {
+      this.username = username;
+      console.log(this.username)
+      // myGlobalVar = this.username;
+    });
+  }
 }

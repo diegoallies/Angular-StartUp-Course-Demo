@@ -8,12 +8,19 @@ import { RouterModule } from '@angular/router';
 import { ProductModule } from './products/product.module';
 import { CartComponent } from './cart/cart.component';
 import { CartService } from './cart/cart.service';
+import { SharedModule } from './shared/shared.module'; // Import SharedModule
+import { LoginComponent } from './auth/login.component';
+import { RegisterComponent } from './auth/register.component';
+import { ProfileComponent } from './auth/profile.component'; // import ProfileComponent
+
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-    CartComponent
+    CartComponent,
+    ProfileComponent // add ProfileComponent to declarations array
+
   ],
   imports: [
     BrowserModule,
@@ -21,10 +28,14 @@ import { CartService } from './cart/cart.service';
     RouterModule.forRoot([
       { path: 'welcome', component: WelcomeComponent },
       { path: 'cart', component: CartComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'profile', component: ProfileComponent }, // add route for profile page
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
     ]),
-    ProductModule
+    ProductModule,
+    SharedModule // Import SharedModule here
   ],
   providers: [CartService],
   bootstrap: [AppComponent]
