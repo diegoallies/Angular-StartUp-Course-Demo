@@ -13,7 +13,8 @@ export class ProfileComponent {
   confirmPassword = '';
   email = '';
   phone = '';
-  
+  successMessage = '';
+
   constructor(
     private userService: UserService
   ){}
@@ -33,13 +34,31 @@ export class ProfileComponent {
       this.email = this.user.email;
       this.phone = this.user.phone;
     }
+
+
+    
   }
-  
-  
 
   onSubmit() {
+    // validate password and confirm password
+    if (this.password !== this.confirmPassword) {
+      alert("Password and Confirm Password fields should match.");
+      return;
+    }
+
+    // update user data
+    this.user.username = this.username;
+    this.user.email = this.email;
+    this.user.phone = this.phone;
+    this.user.password = this.password;
     this.userService.updateUserDB(this.user);
     console.log(this.user, 'this is updated user')
 
+    // show success message
+    this.successMessage = 'Data saved successfully.';
+    setTimeout(() => { this.successMessage = ''; }, 3000);
   }
+
+  
+  
 }
