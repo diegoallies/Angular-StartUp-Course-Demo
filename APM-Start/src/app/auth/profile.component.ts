@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { UserService } from './user.service';
-import { GlobalService } from '../shared/global.service';
 
 @Component({
   selector: 'pm-profile',
@@ -8,33 +7,39 @@ import { GlobalService } from '../shared/global.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
+  user: any = {};
   username = '';
+  password = '';
+  confirmPassword = '';
   email = '';
   phone = '';
-
+  
   constructor(
-    private userService: UserService,
-    private globalService: GlobalService // Inject GlobalService
-  ) {
-    // Load user data from UserService
-    this.username = this.userService.getUsername();
-    this.email = this.userService.getEmail();
-    this.phone = this.userService.getPhone();
+    private userService: UserService
+  ){}
 
-    // Set the global variable
-    this.globalService.setUsername(this.username);
+  ngOnInit() {
+    let loggedIn = localStorage.getItem("loggedIn");
+    let log;
+    if (loggedIn) {
+      log = JSON.parse(loggedIn); 
+      this.user = log; 
+
+      console.log(log, 'this is initial user')
+
+      if (this.user.username) {
+        this.username = this.user.username;
+      }
+      this.email = this.user.email;
+      this.phone = this.user.phone;
+    }
   }
+  
+  
 
   onSubmit() {
-    // Save user data to UserService
-    this.userService.setUsername(this.username);
-    this.userService.setEmail(this.email);
-    this.userService.setPhone(this.phone);
+    this.userService.updateUserDB(this.user);
+    console.log(this.user, 'this is updated user')
 
-    // Set the global variable
-    this.globalService.setUsername(this.username);
-
-    alert('Profile saved!');
-    console.log('clicks')
   }
 }

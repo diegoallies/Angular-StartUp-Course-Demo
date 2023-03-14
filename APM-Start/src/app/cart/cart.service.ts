@@ -10,6 +10,8 @@ export class CartService {
 
   constructor() {}
 
+  
+
   addToCart(product: IProduct): void {
     let index = this.items.findIndex(item => item.productId === product.productId);
     // if (index == -1) {

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'pm-register',
@@ -11,7 +12,10 @@ export class RegisterComponent {
   confirmPassword = '';
   email = '';
   phone = '';
-  theme = '';
+  
+  constructor(
+    private userService: UserService
+  ){}
 
   onSubmit() {
     // Check if passwords match
@@ -20,11 +24,16 @@ export class RegisterComponent {
       return;
     }
     // Save registration data to localStorage
-    localStorage.setItem('username', this.username);
-    localStorage.setItem('password', this.password);
-    localStorage.setItem('email', this.email);
-    localStorage.setItem('phone', this.phone);
-    localStorage.setItem('theme', this.theme);
+    const user = {
+      username: this.username,
+      password: this.password,
+      email: this.email,
+      phone: this.phone
+    }
+    this.userService.registerUserDB(user)
+    
     alert('Registration successful');
+
+
   }
 }
