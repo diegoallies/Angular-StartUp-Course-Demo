@@ -8,15 +8,26 @@
         <div *ngFor="let product of products" class="col-md-4">
           <div class="card thatCard">
             <a [routerLink]="['/products', product.productId]">
-            <img [src]="product?.imageUrl" [alt]="product?.productName" class="card-img-top" />
-            <div class="card-body">
-              <h5 class="card-title">{{ product?.productName }}</h5>
-              <p class="card-text">{{ product?.description }}</p>
-            </div>
-          </a>
+              <img
+                [src]="product?.imageUrl"
+                [alt]="product?.productName"
+                class="card-img-top"
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{ product?.productName }}</h5>
+                <p class="card-text">{{ product?.description }}</p>
+              </div>
+            </a>
             <div class="card-footer">
-              <small class="text-muted">{{ product?.price | currency:'USD':'symbol':'1.2-2' }}</small>
-              <button class="btn btnn btn-sm btn-outline-secondary" (click)="addToCart(product)">Add to cart</button>
+              <small class="text-muted">{{
+                product?.price | currency : "USD" : "symbol" : "1.2-2"
+              }}</small>
+              <button
+                class="btn btnn btn-sm btn-outline-secondary"
+                (click)="addToCart(product)"
+              >
+                Add to cart
+              </button>
             </div>
           </div>
         </div>

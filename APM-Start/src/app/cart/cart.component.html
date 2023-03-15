@@ -13,18 +13,24 @@
     <tr *ngFor="let item of cartItems">
       <td>{{ item.productName }}</td>
       <td>{{ item.price | currency }}</td>
-      <td>{{ item.quantity }}</td>
+      <td class="inp">
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="item.quantity"
+          (change)="updateItem(item)"
+        />
+      </td>
       <td>{{ getItemTotalPrice(item) | currency }}</td>
     </tr>
   </tbody>
   <tfoot>
     <tr>
       <td colspan="3"><h2>Total</h2></td>
-      <th>{{ getTotal() | currency }}</th>
+      <th class="ttl">{{ getTotal() | currency }}</th>
     </tr>
   </tfoot>
 </table>
-
 
 <div class="btns">
   <button class="btn btn-danger" (click)="clearCart()">Clear Cart</button>

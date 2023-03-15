@@ -5,7 +5,7 @@ import { IProduct } from '../products/product';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
   cartItems: IProduct[] = [];
@@ -30,11 +30,16 @@ export class CartComponent implements OnInit {
   }
 
   getTotal(): number {
-    return this.cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    return this.cartItems.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
   }
 
   removeItem(item: IProduct): void {
-    this.cartItems = this.cartItems.filter(i => i.productId !== item.productId);
+    this.cartItems = this.cartItems.filter(
+      (i) => i.productId !== item.productId
+    );
     localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
     this.cartService.cartUpdated.emit();
   }
@@ -48,5 +53,18 @@ export class CartComponent implements OnInit {
   getItemTotalPrice(item: any): number {
     return item.price * item.quantity;
   }
-  
+
+  updateItem(item: IProduct): void {
+    const index = this.cartItems.findIndex(
+      (cartItem) => cartItem.productId === item.productId
+    );
+    if (index !== -1) {
+      this.cartItems[index].quantity = item.quantity;
+      if (this.cartItems[index].quantity <= 0) {
+        this.cartItems.splice(index, 1); // remove item from array
+      }
+      localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+      this.cartService.cartUpdated.emit();
+    }
+  }
 }

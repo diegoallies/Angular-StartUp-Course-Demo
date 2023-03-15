@@ -1,26 +1,25 @@
 <div class="all">
-    <nav>
-      <a class="navbar-brand" routerLink="/welcome">Encrypto</a>
-      <ul class="nav-pills">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/products">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/cart">Cart</a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="username" class="nav-link" routerLink="/profile">
-            <i class="fa fa-user"></i> {{ username }}
-          </a>
-          <a *ngIf="!username" class="nav-link" routerLink="/login">
-            <i class="fa fa-sign-in"></i> Login
-          </a>
-        </li>
-      </ul>
-    </nav>
-    
+  <nav>
+    <a class="navbar-brand" routerLink="/welcome">Encrypto</a>
+    <ul class="nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/products">Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/cart">Cart</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="username" class="nav-link" routerLink="/profile">
+          <i class="fa fa-user"></i> {{ username }}
+        </a>
+        <a *ngIf="!username" class="nav-link" routerLink="/login">
+          <i class="fa fa-sign-in"></i> Login
+        </a>
+      </li>
+    </ul>
+  </nav>
 
-  <div class='container'>
+  <div class="container">
     <router-outlet></router-outlet>
-  </div> 
+  </div>
 </div>

@@ -8,17 +8,11 @@ import { LoginComponent } from '../auth/login.component'; // move LoginComponent
 import { AuthGuard } from '../auth/auth.gaurd';
 
 @NgModule({
-  declarations: [
-    StarComponent,
-    RegisterComponent,
-    LoginComponent
-  ],
+  declarations: [StarComponent, RegisterComponent, LoginComponent],
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: 'register', component: RegisterComponent }
-    ]),
+    RouterModule.forRoot([{ path: 'register', component: RegisterComponent }]),
   ],
   exports: [
     CommonModule,
@@ -26,8 +20,7 @@ import { AuthGuard } from '../auth/auth.gaurd';
     StarComponent,
     LoginComponent, // add LoginComponent to exports array
     RegisterComponent,
-    
   ],
-  providers: [AuthGuard]
+  providers: [AuthGuard],
 })
-export class SharedModule { }
+export class SharedModule {}

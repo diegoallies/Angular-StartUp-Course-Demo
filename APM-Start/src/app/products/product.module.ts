@@ -10,7 +10,7 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     ProductListComponent,
     ProductDetailComponent,
-    ConvertToSpacesPipe
+    ConvertToSpacesPipe,
   ],
   imports: [
     RouterModule.forChild([
@@ -18,10 +18,10 @@ import { SharedModule } from '../shared/shared.module';
       {
         path: 'products/:id',
         canActivate: [ProductDetailGuard],
-        component: ProductDetailComponent
-      }
+        component: ProductDetailComponent,
+      },
     ]),
-    SharedModule
-  ]
+    SharedModule,
+  ],
 })
-export class ProductModule { }
+export class ProductModule {}
