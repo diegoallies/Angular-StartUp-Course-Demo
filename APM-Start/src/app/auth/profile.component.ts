@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from './user.service';
 
+
 @Component({
   selector: 'pm-profile',
   templateUrl: './profile.component.html',
@@ -47,18 +48,20 @@ export class ProfileComponent {
     }
 
     // update user data
-    this.user.username = this.username;
-    this.user.email = this.email;
-    this.user.phone = this.phone;
-    this.user.password = this.password;
     this.userService.updateUserDB(this.user);
     console.log(this.user, 'this is updated user')
+    window.location.href = '/profile'; // redirect to login page
+
 
     // show success message
     this.successMessage = 'Data saved successfully.';
     setTimeout(() => { this.successMessage = ''; }, 3000);
   }
 
+  onLogout() {
+    this.userService.logoutUser();
+  }
+  
   
   
 }

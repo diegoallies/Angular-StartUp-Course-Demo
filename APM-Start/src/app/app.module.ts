@@ -12,6 +12,7 @@ import { SharedModule } from './shared/shared.module'; // Import SharedModule
 import { LoginComponent } from './auth/login.component';
 import { RegisterComponent } from './auth/register.component';
 import { ProfileComponent } from './auth/profile.component'; // import ProfileComponent
+import { AuthGuard } from './auth/auth.gaurd';
 
 
 @NgModule({
@@ -27,10 +28,10 @@ import { ProfileComponent } from './auth/profile.component'; // import ProfileCo
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'welcome', component: WelcomeComponent },
-      { path: 'cart', component: CartComponent },
+      { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'profile', component: ProfileComponent }, // add route for profile page
+      { path: 'profile', component: ProfileComponent,  canActivate: [AuthGuard] }, // add route for profile page
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
     ]),

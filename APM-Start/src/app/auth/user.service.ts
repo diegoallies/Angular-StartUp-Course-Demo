@@ -82,6 +82,12 @@ export class UserService {
       localStorage.setItem("loggedIn", newLogEntry);
     }
   }
+
+  logoutUser() {
+    localStorage.removeItem('loggedIn');
+    window.location.href = '/login'; // redirect to login page
+  }
+  
   
   
   

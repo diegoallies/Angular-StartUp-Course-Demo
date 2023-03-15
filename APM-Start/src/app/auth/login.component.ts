@@ -18,6 +18,7 @@ export class LoginComponent {
     const success = this.userService.loginUserDB(this.username, this.password);
     if (success) {
       alert('Login successful');
+      window.location.href = '/products'; // redirect to login page
     } else {
       alert('Incorrect username or password');
     }

@@ -1,14 +1,14 @@
-.login-container {
+.register-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
   }
   
-  .login-form {
+  .register-form {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 900px;
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
@@ -47,24 +47,7 @@
     background-color: #286090;
   }
   
-  .register-link {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-  }
-  
-  .register-link span {
-    margin-right: 5px;
-  }
-  
-  .register-link a {
-    color: #337ab7;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-
-  .login-container {
+  .register-container {
     background-color: #eaf2ff;
     height: 500px;
   }

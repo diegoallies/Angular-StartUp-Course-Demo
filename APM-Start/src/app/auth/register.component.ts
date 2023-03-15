@@ -22,6 +22,7 @@ export class RegisterComponent {
     if (this.password !== this.confirmPassword) {
       alert('Passwords do not match');
       return;
+      
     }
     // Save registration data to localStorage
     const user = {
@@ -31,8 +32,11 @@ export class RegisterComponent {
       phone: this.phone
     }
     this.userService.registerUserDB(user)
+
     
     alert('Registration successful');
+    window.location.href = '/login'; // redirect to login page
+
 
 
   }
