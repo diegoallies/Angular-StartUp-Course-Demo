@@ -1,6 +1,6 @@
-<h2>Cart</h2>
+<h1 class="cart-header headerr">Cart</h1>
 
-<table class="table">
+<table class="table cart-table">
   <thead>
     <tr>
       <th>Name</th>
@@ -13,16 +13,20 @@
     <tr *ngFor="let item of cartItems">
       <td>{{ item.productName }}</td>
       <td>{{ item.price | currency }}</td>
-      <td>1</td>
-      <td>{{ item.price | currency }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>{{ getItemTotalPrice(item) | currency }} here</td>
     </tr>
   </tbody>
   <tfoot>
     <tr>
-      <td colspan="3"></td>
+      <td colspan="3"><h2>Total</h2></td>
       <th>{{ getTotal() | currency }}</th>
     </tr>
   </tfoot>
 </table>
 
-<a routerLink="/products" class="btn btn-primary">Continue shopping</a>
+
+<div class="btns">
+  <button class="btn btn-danger" (click)="clearCart()">Clear Cart</button>
+  <a routerLink="/products" class="btn btn-primary">Continue shopping</a>
+</div>

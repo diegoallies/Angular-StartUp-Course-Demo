@@ -20,6 +20,11 @@
   .bnt {
     margin-top: 20px;
   }
+
+  .btn-linko {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+  }
   
   label {
     margin-bottom: 10px;
@@ -30,6 +35,7 @@
   input[type="text"],
   input[type="email"],
   input[type="tel"],
+  input[type="password"],
   select {
     width: 100%;
     padding: 10px;

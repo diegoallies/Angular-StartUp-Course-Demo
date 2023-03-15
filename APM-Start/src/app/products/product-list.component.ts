@@ -62,9 +62,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
   this.sub.unsubscribe();
   }
   
-  onRatingClicked(message: string): void {
-  this.pageTitle = "Product List: " + message;
-  }
+  // onRatingClicked(message: string): void {
+  // this.pageTitle = "Product List: " + message;
+  // }
   onProductClicked(product: IProduct): void {
     // console.log('Product clicked: ', product);
   }

@@ -9,37 +9,44 @@ import { IProduct } from '../products/product';
 })
 export class CartComponent implements OnInit {
   cartItems: IProduct[] = [];
-  reload: boolean = false;
 
-  constructor(private cartService: CartService) {
-    this.loadCartItems()
-  }
+  constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
     this.loadCartItems();
     // Subscribe to the cartUpdated event to update the cartItems array
-    this.cartService.cartUpdated.subscribe((items: IProduct[]) => {
-      this.cartItems = items;
+    this.cartService.cartUpdated.subscribe(() => {
+      this.loadCartItems();
     });
   }
 
   loadCartItems(): void {
-    this.cartItems = this.cartService.getItems();
+    const itemsString = localStorage.getItem('cartItems');
+    if (itemsString) {
+      this.cartItems = JSON.parse(itemsString);
+    } else {
+      this.cartItems = [];
+    }
   }
 
   getTotal(): number {
-    return this.cartItems.reduce((acc, item) => acc + item.price, 0);
+    return this.cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
   }
 
-  refresh(): void {
-    this.reload = true;
+  removeItem(item: IProduct): void {
+    this.cartItems = this.cartItems.filter(i => i.productId !== item.productId);
+    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+    this.cartService.cartUpdated.emit();
+  }
+
+  clearCart(): void {
+    this.cartItems = [];
+    localStorage.removeItem('cartItems');
+    this.cartService.cartUpdated.emit();
+  }
+
+  getItemTotalPrice(item: any): number {
+    return item.price * item.quantity;
   }
   
-  shouldRefresh(): boolean {
-    if (this.reload) {
-      this.reload = false;
-      return true;
-    }
-    return false;
-  }
 }

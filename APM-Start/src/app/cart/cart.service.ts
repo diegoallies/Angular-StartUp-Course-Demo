@@ -2,37 +2,53 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { IProduct } from '../products/product';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
-  items: IProduct[] = [];
-  cartUpdated: EventEmitter<IProduct[]> = new EventEmitter<IProduct[]>();
+  cartUpdated: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() {}
 
-  
-
   addToCart(product: IProduct): void {
-    let index = this.items.findIndex(item => item.productId === product.productId);
-    // if (index == -1) {
-    //   // Product does not exist in cart, add it with a quantity of 1
-    //   this.items.push({ ...product, quantity: 1 });
-    // } else {
-    //   // Product already exists in cart, increment the quantity
-    //   this.items[index].quantity++;
-    //   console.log(this.items)
-    // }
-    // Emit event with updated cart items
-    // this.cartUpdated.emit([...this.items]); // emit a new array to trigger change detection in the component
-
-    this.items.push({ ...product, quantity: 1 });
+    const cartItems = this.getCartItems();
+    const index = cartItems.findIndex(
+      (item) => item.productId === product.productId
+    );
+    if (index !== -1) {
+      cartItems[index].quantity++;
+    } else {
+      cartItems.push({ ...product, quantity: 1 });
+    }
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    this.cartUpdated.emit();
   }
 
-  getItems(): IProduct[] {
-    return this.items;
+  advanceAddToCart(product: IProduct, quantity: number): void {
+    const cartItems = this.getCartItems();
+    const index = cartItems.findIndex(
+      (item) => item.productId === product.productId
+    );
+    if (index !== -1) {
+      cartItems[index].quantity += quantity;
+    } else {
+      cartItems.push({ ...product, quantity });
+    }
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    this.cartUpdated.emit();
+    this.cartUpdated.emit();
+  }
+
+  getCartItems(): IProduct[] {
+    const cartItems = localStorage.getItem('cartItems');
+    return cartItems ? JSON.parse(cartItems) : [];
   }
 
   clearCart(): void {
-    this.items = [];
+    localStorage.removeItem('cartItems');
+    this.cartUpdated.emit();
+  }
+
+  getItemTotalPrice(item: IProduct): number {
+    return item.price * item.quantity;
   }
 }
