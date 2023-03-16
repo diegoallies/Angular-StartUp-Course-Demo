@@ -5,6 +5,15 @@ import { ConvertToSpacesPipe } from '../shared/convert-to-spaces.pipe';
 import { RouterModule } from '@angular/router';
 import { ProductDetailGuard } from './product-detail.guard';
 import { SharedModule } from '../shared/shared.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faShare } from '@fortawesome/free-solid-svg-icons';
+
+
+library.add(faHeart);
+library.add(faShare);
+
 
 @NgModule({
   declarations: [
@@ -21,7 +30,9 @@ import { SharedModule } from '../shared/shared.module';
         component: ProductDetailComponent,
       },
     ]),
+    FontAwesomeModule,
     SharedModule,
+    
   ],
 })
 export class ProductModule {}

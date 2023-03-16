@@ -15,6 +15,7 @@ import { ProfileComponent } from './auth/profile.component'; // import ProfileCo
 import { AuthGuard } from './auth/auth.gaurd';
 import { DrawingBoardComponent } from './draw-board/draw-board.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

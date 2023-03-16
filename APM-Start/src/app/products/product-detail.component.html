@@ -1,57 +1,108 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <img
-        [src]="product?.imageUrl"
-        [alt]="product?.productName"
-        class="img-fluid"
-      />
-    </div>
-    <div class="col-md-6">
-      <h2>{{ product?.productName }}</h2>
-      <p class="lead">{{ product?.description }}</p>
-      <hr />
-      <div class="d-flex justify-content-between">
-        <div>
-          <p class="text-muted mb-1">Product Code:</p>
-          <p>{{ product?.productCode }}</p>
-          <p class="text-muted mb-1">Release Date:</p>
-          <p>{{ product?.releaseDate }}</p>
+<section class="product">
+  <div class="product__photo">
+    <div class="photo-container">
+      <div class="photo-main">
+        <div class="controls">
+          <i class="fa fa-heart"></i>
+          <i class="fa fa-share"></i>
         </div>
-        <div>
-          <p class="text-muted mb-1">Price:</p>
-          <p class="fw-bold">
-            {{ product?.price | currency : "USD" : "symbol" : "1.2-2" }}
-          </p>
-          <p class="text-muted mb-1">Rating:</p>
-          <p>{{ product?.starRating }}</p>
-        </div>
+        <img
+          [src]="product?.imageUrl"
+          [alt]="product?.productName"
+          class="bigImg"
+        />
       </div>
-      <div class="d-flex">
-        <div class="me-3">
-          <label for="quantity" class="form-label">Quantity:</label>
-          <input
-            type="number"
-            class="form-control"
-            [(ngModel)]="quantity"
-            placeholder="Quantity"
-            name="quantity"
-          />
-        </div>
-        <div class="d-flex flex-column justify-content-end">
-          <button
-            *ngIf="product"
-            class="btn btn-primary"
-            (click)="advanceAddToCart(product, quantity)"
-          >
-            Add to Cart
-          </button>
-        </div>
+
+      <div class="photo-album">
+        <ul>
+          <li>
+            <img
+              [src]="product?.imageUrl"
+              [alt]="product?.productName"
+              class="img-fluid"
+            />
+          </li>
+          <li>
+            <img
+              [src]="product?.imageUrl"
+              [alt]="product?.productName"
+              class="img-fluid"
+            />
+          </li>
+          <li>
+            <img
+              [src]="product?.imageUrl"
+              [alt]="product?.productName"
+              class="img-fluid"
+            />
+          </li>
+          <li>
+            <img
+              [src]="product?.imageUrl"
+              [alt]="product?.productName"
+              class="img-fluid"
+            />
+          </li>
+          <li>
+            <img
+              [src]="product?.imageUrl"
+              [alt]="product?.productName"
+              class="img-fluid"
+            />
+          </li>
+        </ul>
       </div>
-      <hr />
-      <button class="btn btn-outline-secondary" (click)="onBack()">
-        <i class="fa fa-chevron-left me-2"></i> Back
-      </button>
     </div>
   </div>
-</div>
+  <div class="product__info">
+    <div class="title">
+      <h1>{{ product?.productName }}</h1>
+      <span>{{ product?.productCode }}</span>
+    </div>
+    <div class="price">
+      $ <span>{{ product?.price }}</span>
+      <!-- // removed pipe {currency : "USD" : "symbol" : "1.2-2" } -->
+    </div>
+    <!-- <div class="variant">
+			<h3>SELECT A COLOR</h3>
+			<ul>
+				<li><img src="https://res.cloudinary.com/john-mantas/image/upload/v1537302064/codepen/delicious-apples/green-apple2.png" alt="green apple"></li>
+				<li><img src="https://res.cloudinary.com/john-mantas/image/upload/v1537302752/codepen/delicious-apples/yellow-apple.png" alt="yellow apple"></li>
+				<li><img src="https://res.cloudinary.com/john-mantas/image/upload/v1537302427/codepen/delicious-apples/orange-apple.png" alt="orange apple"></li>
+				<li><img src="https://res.cloudinary.com/john-mantas/image/upload/v1537302285/codepen/delicious-apples/red-apple.png" alt="red apple"></li>
+			</ul>
+		</div> -->
+    <div class="description">
+      <h3>Description</h3>
+      <p>{{ product?.description }}</p>
+    </div>
+    <div class="description">
+      <h3>Release Date</h3>
+      <p>{{ product?.releaseDate }}</p>
+    </div>
+
+    <div class="d-flex">
+      <div class="me-3">
+        <!-- <label for="quantity" class="form-label">Quantity:</label> -->
+        <input
+          type="number"
+          class="form-control qty"
+          [(ngModel)]="quantity"
+          placeholder="Quantity"
+          name="quantity"
+        />
+      </div>
+      <div class="d-flex flex-column justify-content-end">
+        <button
+          *ngIf="product"
+          class="buy--btn"
+          (click)="advanceAddToCart(product, quantity)"
+        >
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
