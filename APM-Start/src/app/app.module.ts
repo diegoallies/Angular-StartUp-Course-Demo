@@ -13,13 +13,15 @@ import { LoginComponent } from './auth/login.component';
 import { RegisterComponent } from './auth/register.component';
 import { ProfileComponent } from './auth/profile.component'; // import ProfileComponent
 import { AuthGuard } from './auth/auth.gaurd';
+import { DrawingBoardComponent } from './draw-board/draw-board.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
     CartComponent,
-    ProfileComponent, // add ProfileComponent to declarations array
+    ProfileComponent,
+    DrawingBoardComponent, // add ProfileComponent to declarations array
   ],
   imports: [
     BrowserModule,
@@ -29,12 +31,13 @@ import { AuthGuard } from './auth/auth.gaurd';
       { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
+      { path: 'draw-board', component: DrawingBoardComponent },
       {
         path: 'profile',
         component: ProfileComponent,
         canActivate: [AuthGuard],
       }, // add route for profile page
-      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+      { path: '', redirectTo: 'products', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
     ]),
     ProductModule,
