@@ -1,20 +1,77 @@
-<div class="login-container">
- 
-  <form (ngSubmit)="onSubmit()" class="login-form">
-    <h2>Login</h2>
-    <br>
-    <div class="form-group">
-      <label for="username">Username:</label>
-      <input type="text" name="username" [(ngModel)]="username" required>
+<div
+  class="container"
+  id="container"
+  [ngClass]="{ 'right-panel-active': isSignIn }"
+>
+  <div class="form-container sign-up-container">
+    <form (ngSubmit)="onRegisterSubmit()">
+      <h1>Create Account</h1>
+      <br />
+      <input
+        type="text"
+        placeholder="Name"
+        name="name"
+        [(ngModel)]="username"
+        required
+      />
+      <input
+        type="email"
+        placeholder="Email"
+        name="email"
+        [(ngModel)]="email"
+        required
+      />
+      <input
+        type="email"
+        placeholder="Phone Number"
+        name="phone"
+        [(ngModel)]="phone"
+        required
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        name="password"
+        [(ngModel)]="password"
+        required
+      />
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+  <div class="form-container sign-in-container">
+    <form (ngSubmit)="onLoginSubmit()">
+      <h1>Sign in</h1>
+      <br /><br />
+      <input
+        type="text"
+        placeholder="Username"
+        name="username"
+        [(ngModel)]="username"
+        required
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        name="password"
+        [(ngModel)]="password"
+        required
+      />
+      <a href="#">Forgot your password?</a>
+      <button type="submit">Sign In</button>
+    </form>
+  </div>
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-left">
+        <h1>Welcome Back!</h1>
+        <p>To keep connected with us please login with your personal info</p>
+        <button class="ghost" (click)="toggleSignIn()">Sign In</button>
+      </div>
+      <div class="overlay-panel overlay-right">
+        <h1>Hello, Friend!</h1>
+        <p>Enter your personal details and start journey with us</p>
+        <button class="ghost" (click)="toggleSignIn()">Sign Up</button>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input type="password" name="password" [(ngModel)]="password" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-    <div class="register-link" routerLink="/register">
-      <span>Not registered?</span>
-      <a routerLink="/register">Register now</a>
-    </div>
-  </form>
+  </div>
 </div>

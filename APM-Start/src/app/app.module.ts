@@ -10,7 +10,6 @@ import { CartComponent } from './cart/cart.component';
 import { CartService } from './cart/cart.service';
 import { SharedModule } from './shared/shared.module'; // Import SharedModule
 import { LoginComponent } from './auth/login.component';
-import { RegisterComponent } from './auth/register.component';
 import { ProfileComponent } from './auth/profile.component'; // import ProfileComponent
 import { AuthGuard } from './auth/auth.gaurd';
 import { DrawingBoardComponent } from './draw-board/draw-board.component';
@@ -31,7 +30,6 @@ import { DrawingBoardComponent } from './draw-board/draw-board.component';
       { path: 'welcome', component: WelcomeComponent },
       { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
       { path: 'draw-board', component: DrawingBoardComponent },
       {
         path: 'profile',
