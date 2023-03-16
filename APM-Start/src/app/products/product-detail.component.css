@@ -123,6 +123,7 @@ img {
   font-size: 1.2em;
   margin-bottom: 50px !important;
   margin-top: 25px !important;
+  clear: left;
 
 
 }
@@ -216,6 +217,14 @@ img {
   to {
     opacity: 0;
   }
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
 }
 
 /* .modal_content {

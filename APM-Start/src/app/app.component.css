@@ -1,8 +1,9 @@
 .all {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   margin-right: 80px !important;
+  margin-top: 45px;
 }
 
 .content::-webkit-scrollbar {
