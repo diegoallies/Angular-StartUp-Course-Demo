@@ -18,6 +18,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   sub!: Subscription;
 
   private _listFilter: string = '';
+
   get listFilter(): string {
     return this._listFilter;
   }

@@ -4,8 +4,21 @@
       {{ pageTitle }}
     </div>
     <div class="card-body">
-      <div class="row">
-        <div *ngFor="let product of products" class="col-md-4">
+      <div class='row'>
+        <div class='col-md-2'>Filter by:</div>
+        <div class='col-md-4'>
+          <input type='text'
+                 [(ngModel)]='listFilter' />
+        </div>
+      </div>
+      <div class='row'
+         *ngIf='listFilter'>
+      <div class='col-md-6'>
+        
+      </div>
+    </div>
+      <div class="row" *ngIf='products.length'>
+        <div *ngFor="let product of filteredProducts" class="col-md-4">
           <div class="card thatCard">
             <a [routerLink]="['/products', product.productId]">
               <img
